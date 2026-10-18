@@ -1,0 +1,51 @@
+media:
+  input: assets
+  output: assets
+
+content:
+  - name: news
+    label: Uudised
+    type: collection
+    path: content/news
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, date, category, published]
+      primary: title
+      sort: [date, title]
+      default:
+        search: ""
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Pealkiri
+        type: string
+        required: true
+      - name: date
+        label: Kuupäev
+        type: date
+        required: true
+      - name: category
+        label: Kategooria
+        type: string
+        description: "Näiteks PROJEKTI PÄEVIK, TEHNOLOOGIA või KATSETUSED"
+      - name: excerpt
+        label: Lühikirjeldus
+        type: text
+        required: true
+      - name: body
+        label: Uudise tekst
+        type: text
+      - name: image
+        label: Pildi URL
+        type: string
+        description: "Laadi pilt üles meediasse ja lisa siia selle URL."
+      - name: published
+        label: Avaldatud
+        type: boolean
+        default: true
+
+settings:
+  content:
+    merge: true
